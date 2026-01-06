@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portefolio</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <style>
+        :root {
+            --color-primary: #00d4ff;
+            --color-secondary: #ff006e;
+            --color-dark: #0a0e27;
+            --color-darker: #050911;
+            --color-text: #e0e0e0;
+            --color-text-light: #b0b0b0;
+            --color-accent: #ffbe0b;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-base: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-24);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-24);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-24);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px var(--space-24);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--color-primary);
+            margin-bottom: var(--space-32);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: var(--space-16);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--color-text-light);
+            margin-bottom: var(--space-24);
+        }
+
+        .hero-info {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-32);
+            margin-top: var(--space-24);
+            flex-wrap: wrap;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .info-label {
+            color: var(--color-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-text);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: var(--radius-base);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: var(--space-16);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 80px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: var(--space-32);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid var(--color-secondary);
+            padding-bottom: var(--space-16);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-16);
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--color-primary);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Education */
+        .education-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--space-24);
+            margin-bottom: var(--space-16);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--color-primary);
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .education-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .education-subtitle {
+            color: var(--color-text-light);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: var(--radius-base);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: var(--color-primary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 110, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .project-content {
+            padding: var(--space-24);
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--color-primary);
+        }
+
+        .project-description {
+            color: var(--color-text-light);
+            font-size: 14px;
+            margin-bottom: var(--space-16);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 190, 11, 0.1);
+            color: var(--color-accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Blog */
+        .blog-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            margin-bottom: var(--space-16);
+            transition: all 0.3s;
+        }
+
+        .blog-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--color-primary);
+        }
+
+        .blog-date {
+            color: var(--color-accent);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .blog-excerpt {
+            color: var(--color-text-light);
+            font-size: 14px;
+        }
+
+        /* Certificates */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+            padding: var(--space-24);
+            border-radius: var(--radius-base);
+            border: 2px solid var(--color-secondary);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.3);
+        }
+
+        .certificate-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-16);
+        }
+
+        .certificate-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .certificate-issuer {
+            color: var(--color-text-light);
+            font-size: 12px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+            padding: 60px var(--space-24);
+            border-radius: var(--radius-base);
+            text-align: center;
+            border: 2px solid var(--color-primary);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-24);
+            margin-top: var(--space-32);
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text);
+            text-decoration: none;
+            padding: var(--space-16);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--color-primary);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-16);
+            margin-bottom: var(--space-32);
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 24px;
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: var(--color-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: var(--space-32) var(--space-24);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--color-text-light);
+            margin-top: 80px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: var(--space-16);
+            }
+
+            .hero {
+                padding: 40px var(--space-16);
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-info {
+                gap: var(--space-16);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">PORTRS.</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('education')">Education</a></li>
+                <li><a onclick="scrollToSection('experience')">Experience</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('blog')">Blog</a></li>
+                <li><a onclick="scrollToSection('certificates')">Certificates</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <section class="hero">
+            <div style="display: flex; align-items: center; gap: var(--space-32); margin-bottom: var(--space-24); flex-wrap: wrap; justify-content: center;">
+                <div style="flex-shrink: 0;">
+                    <img id="profile-photo" src="Photo.jpg" alt="Photo" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--color-primary); object-fit: cover;">
+                </div>
+            <div>
+            <h1>Hello! I'm Rodrigo Silva</h1>
+            <p class="hero-subtitle">Cybersecurity Enthusiast | Computer Science Student | Learning Smart Detections of Stealhty DoS Attacks</p>
+            
+            <div class="hero-info">
+                <div class="info-card">
+                    <div class="info-label">Age</div>
+                    <div class="info-value">22 years</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Location</div>
+                    <div class="info-value">Lisbon, PT 🇵🇹</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Speciality</div>
+                    <div class="info-value">Cybersecurity</div>
+                </div>
+            </div>
+
+            <button class="btn" onclick="document.getElementById('cv-download').click()">Download CV</button>
+            <a id="cv-download" href="CV.pdf" style="display:none;" download="CV.pdf"></a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p class="about-text">
+                        I am a Backend Developer passionate about system architecture, cloud computing, and security. 
+                        Currently studying a Master's in Computer Engineering with a specialization in Security and Privacy at NOVA School of Science and Technology.
+                        Experience in scalable development with Java Spring Boot, implementation of secure protocols, and deployment in the cloud (AWS/Azure).
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: var(--color-primary); margin-bottom: var(--space-16);">Key Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Java & Spring Boot</div>
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">C & OCaml</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">Docker & K8s</div>
+                        <div class="skill-tag">AWS & Azure</div>
+                        <div class="skill-tag">MongoDB & Redis</div>
+                        <div class="skill-tag">Apache Kafka</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Academic background</h2>
+            
+            <div class="education-item">
+                <div class="education-title">Master's in Computer Science and Engineering</div>
+                <div class="education-subtitle">NOVA School of Science and Technology • 2024 - Present</div>
+                <p style="color: var(--color-text-light); font-size: 14px;">
+                    Specialization in Security and Privacy.
+                </p>
+            </div>
+
+            <div class="education-item">
+                <div class="education-title">Bachelor's in Computer Science and Engineering</div>
+                <div class="education-subtitle">NOVA School of Science and Technology • 2021 - 2024</div>
+                <p style="color: var(--color-text-light); font-size: 14px;">
+                </p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="education-item">
+                <div class="education-title">Backend Developer Intern</div>
+                <div class="education-subtitle">Celfocus - NOVABASE, Lisboa • 2024</div>
+                <p style="color: var(--color-text-light); font-size: 14px;">
+                    Developed a scalable backend application using Java Spring Boot with REST architecture and MongoDB integration. Implemented security features including JWT authentication, data validation, and CI/CD pipelines with Swagger documentation. Optimized performance through Spring Boot Cache System for user and order queries. Integrated Apache Kafka for high-volume real-time message processing and data streaming. Deployed solution on AWS using Amazon ECR for container management, with dedicated VMs for Kafka, database, and application services.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Academic Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🔐</div>
+                    <div class="project-content">
+                        <div class="project-title">Secure Handshake Protocol</div>
+                        <p class="project-description">
+                            UDP-based transport protocol with mutual authentication, data encryption, and protection against replay attacks.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Cryptography</span>
+                            <span class="tag">ECDSA & HMAC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">☁️</div>
+                    <div class="project-content">
+                        <div class="project-title">Tukano - Cloud Computing Deployment</div>
+                        <p class="project-description">
+                            Migration of social video-sharing network to Azure with Kubernetes, Docker containerisation, and performance analysis.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Azure AKS</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">PostgreSQL/MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">⚙️</div>
+                    <div class="project-content">
+                        <div class="project-title">Distributed Systems Implementation</div>
+                        <p class="project-description">
+                            Implementation of Multi-Paxos and ABD Quorum protocols in Java with latency/throughput analysis.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Babel Framework</span>
+                            <span class="tag">Distributed Systems</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🧅</div>
+                    <div class="project-content">
+                        <div class="project-title">Trust-Aware Tor Path Selection</div>
+                        <p class="project-description">
+                            TAPS algorithm para enhanced Tor circuit selection com trust policy configurations e anonymity analysis.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Tor Protocol</span>
+                            <span class="tag">Network Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <h2>Artigos & Blog</h2>
+            
+            <!--<div class="blog-item">
+                <div class="blog-date">6 de Janeiro de 2026</div>
+                <div class="blog-title">Implementando Segurança em Backend com Java Spring Boot</div>
+                <p class="blog-excerpt">
+                    Guia prático sobre JWT authentication, validação de dados e implementação de pipelines CI/CD com Swagger...
+                </p>
+            </div>
+
+            <div class="blog-item">
+                <div class="blog-date">28 de Dezembro de 2025</div>
+                <div class="blog-title">Arquitetura de Microserviços com Apache Kafka e Cloud</div>
+                <p class="blog-excerpt">
+                    Como implementar message streaming em tempo real com Kafka, integrar com MongoDB e fazer deploy em AWS...
+                </p>
+            </div>
+
+            <div class="blog-item">
+                <div class="blog-date">15 de Dezembro de 2025</div>
+                <div class="blog-title">Protocolos Criptográficos e Segurança em Rede</div>
+                <p class="blog-excerpt">
+                    Análise profunda de ECDSA, HMAC, Diffie-Hellman e como implementar transportes seguros em UDP/TCP...
+                </p>
+            </div> -->
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <h2>Certifications & Awards</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="certificate-icon">🏆</div>
+                    <div class="certificate-name">Backend Developer Intern</div>
+                    <div class="certificate-issuer">Celfocus - NOVABASE • 2024</div>
+                </div>
+
+                <div class="certificate-card">
+                    <div class="certificate-icon">🎓</div>
+                    <div class="certificate-name">Bachelor's Degree in Computer Science and Engineering</div>
+                    <div class="certificate-issuer">NOVA University • 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-container">
+                <h2 style="border: none; color: var(--color-primary); margin: 0 0 var(--space-16) 0;">
+                    Shall we work together?
+                </h2>
+                <p style="color: var(--color-text-light); margin-bottom: var(--space-32);">
+                    I am currently seeking employment opportunities.
+                </p>
+
+                <div class="social-links">
+                    <a href="https://github.com/RAGSilva" target="_blank" class="social-icon" title="GitHub">
+                        <span></span>
+                    </a>
+                    <a href="https://linkedin.com/in/rodrigo-silva-150b01191" target="_blank" class="social-icon" title="LinkedIn">
+                        <span>💼</span>
+                    </a>
+                </div>
+
+                <div class="contact-links">
+                    <a href="mailto:digosilva2003@gmail.com" class="contact-link">
+                        ✉️ digosilva2003@gmail.com
+                    </a>
+                    <a href="tel:+351964286547" class="contact-link">
+                        📱 +351 964 286 547
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Rodrigo Silva</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[onclick]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
