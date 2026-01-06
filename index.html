@@ -551,6 +551,44 @@
             border: 2px solid var(--color-primary);
         }
 
+        .contact-container h2 {
+            opacity: 1 !important;
+            border: none;
+            color: var(--color-primary);
+            margin: 0 0 var(--space-16) 0;
+        }
+
+        .contact-container.active h2 {
+            animation: revealElement 0.6s ease-out forwards;
+        }
+
+        .contact-container p {
+            opacity: 0;
+        }
+
+        .contact-container.active p {
+            opacity: 1;
+            animation: revealElement 0.6s ease-out 0.1s forwards;
+        }
+
+        .contact-container .social-links {
+            opacity: 0;
+        }
+
+        .contact-container.active .social-links {
+            opacity: 1;
+            animation: revealElement 0.6s ease-out 0.2s forwards;
+        }
+
+        .contact-container .contact-links {
+            opacity: 0;
+        }
+
+        .contact-container.active .contact-links {
+            opacity: 1;
+            animation: revealElement 0.6s ease-out 0.3s forwards;
+        }
+
 
         .contact-links {
             display: flex;
@@ -871,10 +909,8 @@
 
         <!-- Contact Section -->
         <section id="contact">
-            <div class="contact-container scroll-reveal">
-                <h2 style="border: none; color: var(--color-primary); margin: 0 0 var(--space-16) 0;">
-                    Shall we work together?
-                </h2>
+            <div class="contact-container scroll-reveal-item">
+                <h2>Shall we work together?</h2>
                 <p style="color: var(--color-text-light); margin-bottom: var(--space-32);">
                     I am currently seeking employment opportunities.
                 </p>
