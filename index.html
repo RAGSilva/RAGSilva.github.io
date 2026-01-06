@@ -26,11 +26,13 @@
             --radius-base: 8px;
         }
 
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,6 +41,7 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+
 
         /* Navigation */
         nav {
@@ -51,6 +54,7 @@
             border-bottom: 2px solid var(--color-primary);
         }
 
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -59,6 +63,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
 
         .logo {
             font-size: 24px;
@@ -69,11 +74,13 @@
             background-clip: text;
         }
 
+
         .nav-links {
             display: flex;
             gap: var(--space-24);
             list-style: none;
         }
+
 
         .nav-links a {
             color: var(--color-text);
@@ -82,9 +89,11 @@
             cursor: pointer;
         }
 
+
         .nav-links a:hover {
             color: var(--color-primary);
         }
+
 
         /* Hamburger Menu */
         .hamburger {
@@ -94,6 +103,7 @@
             gap: 6px;
         }
 
+
         .hamburger span {
             width: 25px;
             height: 3px;
@@ -102,17 +112,21 @@
             transition: all 0.3s ease;
         }
 
+
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(10px, 10px);
         }
+
 
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
 
+
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(8px, -8px);
         }
+
 
         @media (max-width: 768px) {
             .nav-links {
@@ -128,19 +142,24 @@
                 border-bottom: 2px solid var(--color-primary);
             }
 
+
             .nav-links.active {
                 display: flex;
             }
+
 
             .nav-links a {
                 padding: var(--space-12) 0;
                 border-bottom: 1px solid rgba(0, 212, 255, 0.2);
             }
 
+
             .hamburger {
                 display: flex;
             }
         }
+
+
 
         /* Main Container */
         .container {
@@ -148,6 +167,7 @@
             margin: 0 auto;
             padding: var(--space-24);
         }
+
 
         /* Hero Section */
         .hero {
@@ -161,6 +181,7 @@
             animation: slideDown 0.6s ease-out;
         }
 
+
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -172,6 +193,7 @@
             }
         }
 
+
         .hero h1 {
             font-size: 48px;
             margin-bottom: var(--space-16);
@@ -181,11 +203,13 @@
             background-clip: text;
         }
 
+
         .hero-subtitle {
             font-size: 20px;
             color: var(--color-text-light);
             margin-bottom: var(--space-24);
         }
+
 
         .hero-info {
             display: flex;
@@ -195,12 +219,14 @@
             flex-wrap: wrap;
         }
 
+
         .info-card {
             background: rgba(255, 255, 255, 0.05);
             padding: var(--space-16);
             border-radius: var(--radius-base);
             border: 1px solid rgba(0, 212, 255, 0.3);
         }
+
 
         .info-label {
             color: var(--color-primary);
@@ -209,11 +235,13 @@
             letter-spacing: 2px;
         }
 
+
         .info-value {
             font-size: 18px;
             font-weight: bold;
             color: var(--color-text);
         }
+
 
         /* Buttons */
         .btn {
@@ -230,27 +258,47 @@
             margin-top: var(--space-16);
         }
 
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
         }
 
-        /* Section Styles */
-        section {
-            margin-bottom: 80px;
-            animation: fadeIn 0.6s ease-in;
+
+        /* Scroll Reveal Animations */
+        .scroll-reveal {
+            opacity: 0;
         }
 
-        @keyframes fadeIn {
+        .scroll-reveal.active {
+            animation: revealElement 0.6s ease-out forwards;
+        }
+
+        .scroll-reveal-item {
+            opacity: 0;
+        }
+
+        .scroll-reveal-item.active {
+            animation: revealElement 0.6s ease-out forwards;
+        }
+
+        @keyframes revealElement {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px) translateX(-20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) translateX(0);
             }
         }
+
+
+        /* Section Styles */
+        section {
+            margin-bottom: 80px;
+        }
+
 
         h2 {
             font-size: 36px;
@@ -260,7 +308,13 @@
             letter-spacing: 2px;
             border-bottom: 3px solid var(--color-secondary);
             padding-bottom: var(--space-16);
+            opacity: 0;
         }
+
+        h2.active {
+            animation: revealElement 0.6s ease-out forwards;
+        }
+
 
         /* About Section */
         .about-content {
@@ -270,17 +324,20 @@
             align-items: center;
         }
 
+
         .about-text {
             font-size: 16px;
             line-height: 1.8;
             color: var(--color-text);
         }
 
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: var(--space-16);
         }
+
 
         .skill-tag {
             background: rgba(0, 212, 255, 0.1);
@@ -292,10 +349,12 @@
             transition: all 0.3s;
         }
 
+
         .skill-tag:hover {
             background: rgba(0, 212, 255, 0.2);
             transform: translateY(-5px);
         }
+
 
         /* Education */
         .education-item {
@@ -307,10 +366,12 @@
             transition: all 0.3s;
         }
 
+
         .education-item:hover {
             background: rgba(255, 255, 255, 0.08);
             transform: translateX(10px);
         }
+
 
         .education-title {
             font-size: 18px;
@@ -319,11 +380,13 @@
             margin-bottom: 8px;
         }
 
+
         .education-subtitle {
             color: var(--color-text-light);
             font-size: 14px;
             margin-bottom: 8px;
         }
+
 
         /* Projects */
         .projects-grid {
@@ -331,6 +394,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-24);
         }
+
 
         .project-card {
             background: rgba(255, 255, 255, 0.05);
@@ -341,11 +405,13 @@
             transition: all 0.3s;
         }
 
+
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
             border-color: var(--color-primary);
         }
+
 
         .project-image {
             width: 100%;
@@ -357,9 +423,11 @@
             font-size: 48px;
         }
 
+
         .project-content {
             padding: var(--space-24);
         }
+
 
         .project-title {
             font-size: 20px;
@@ -368,17 +436,20 @@
             color: var(--color-primary);
         }
 
+
         .project-description {
             color: var(--color-text-light);
             font-size: 14px;
             margin-bottom: var(--space-16);
         }
 
+
         .project-tags {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
         }
+
 
         .tag {
             background: rgba(255, 190, 11, 0.1);
@@ -387,6 +458,7 @@
             border-radius: 20px;
             font-size: 12px;
         }
+
 
         /* Blog */
         .blog-item {
@@ -398,16 +470,19 @@
             transition: all 0.3s;
         }
 
+
         .blog-item:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: var(--color-primary);
         }
+
 
         .blog-date {
             color: var(--color-accent);
             font-size: 12px;
             margin-bottom: 8px;
         }
+
 
         .blog-title {
             font-size: 20px;
@@ -416,10 +491,12 @@
             margin-bottom: 8px;
         }
 
+
         .blog-excerpt {
             color: var(--color-text-light);
             font-size: 14px;
         }
+
 
         /* Certificates */
         .certificates-grid {
@@ -427,6 +504,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-24);
         }
+
 
         .certificate-card {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
@@ -437,15 +515,18 @@
             transition: all 0.3s;
         }
 
+
         .certificate-card:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 40px rgba(255, 0, 110, 0.3);
         }
 
+
         .certificate-icon {
             font-size: 48px;
             margin-bottom: var(--space-16);
         }
+
 
         .certificate-name {
             font-size: 16px;
@@ -454,10 +535,12 @@
             margin-bottom: 4px;
         }
 
+
         .certificate-issuer {
             color: var(--color-text-light);
             font-size: 12px;
         }
+
 
         /* Contact Section */
         .contact-container {
@@ -468,6 +551,7 @@
             border: 2px solid var(--color-primary);
         }
 
+
         .contact-links {
             display: flex;
             justify-content: center;
@@ -475,6 +559,7 @@
             margin-top: var(--space-32);
             flex-wrap: wrap;
         }
+
 
         .contact-link {
             display: inline-flex;
@@ -489,10 +574,12 @@
             transition: all 0.3s;
         }
 
+
         .contact-link:hover {
             background: rgba(0, 212, 255, 0.2);
             color: var(--color-primary);
         }
+
 
         /* Social Links */
         .social-links {
@@ -501,6 +588,7 @@
             gap: var(--space-16);
             margin-bottom: var(--space-32);
         }
+
 
         .social-icon {
             width: 50px;
@@ -516,11 +604,13 @@
             font-size: 24px;
         }
 
+
         .social-icon:hover {
             background: var(--color-primary);
             color: var(--color-dark);
             transform: translateY(-5px);
         }
+
 
         /* Footer */
         footer {
@@ -531,31 +621,38 @@
             margin-top: 80px;
         }
 
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 gap: var(--space-16);
             }
 
+
             .hero {
                 padding: 40px var(--space-16);
             }
+
 
             .hero h1 {
                 font-size: 32px;
             }
 
+
             .hero-info {
                 gap: var(--space-16);
             }
+
 
             .about-content {
                 grid-template-columns: 1fr;
             }
 
+
             h2 {
                 font-size: 28px;
             }
+
 
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -580,6 +677,7 @@
         </div>
     </nav>
 
+
     <!-- Hero Section -->
     <div class="container">
         <section class="hero">
@@ -592,36 +690,38 @@
             <p class="hero-subtitle">Cybersecurity Enthusiast | Computer Science Student | Learning Smart Detections of Stealhty DoS Attacks</p>
             
             <div class="hero-info">
-                <div class="info-card">
+                <div class="info-card scroll-reveal-item">
                     <div class="info-label">Age</div>
                     <div class="info-value">22 years</div>
                 </div>
-                <div class="info-card">
+                <div class="info-card scroll-reveal-item">
                     <div class="info-label">Location</div>
                     <div class="info-value">Lisbon, PT 🇵🇹</div>
                 </div>
-                <div class="info-card">
+                <div class="info-card scroll-reveal-item">
                     <div class="info-label">Speciality</div>
                     <div class="info-value">Cybersecurity</div>
                 </div>
             </div>
 
+
             <button class="btn" onclick="document.getElementById('cv-download').click()">Download CV</button>
             <a id="cv-download" href="CV.pdf" style="display:none;" download="CV.pdf"></a>
         </section>
 
+
         <!-- About Section -->
         <section id="about">
-            <h2>About Me</h2>
+            <h2 class="scroll-reveal">About Me</h2>
             <div class="about-content">
-                <div>
+                <div class="scroll-reveal-item">
                     <p class="about-text">
                         I am a Backend Developer passionate about system architecture, cloud computing, and security. 
                         Currently studying a Master's in Computer Engineering with a specialization in Security and Privacy at NOVA School of Science and Technology.
                         Experience in scalable development with Java Spring Boot, implementation of secure protocols, and deployment in the cloud (AWS/Azure).
                     </p>
                 </div>
-                <div>
+                <div class="scroll-reveal-item">
                     <h3 style="color: var(--color-primary); margin-bottom: var(--space-16);">Key Skills</h3>
                     <div class="skills-grid">
                         <div class="skill-tag">Java & Spring Boot</div>
@@ -637,11 +737,12 @@
             </div>
         </section>
 
+
         <!-- Education Section -->
         <section id="education">
-            <h2>Academic background</h2>
+            <h2 class="scroll-reveal">Academic background</h2>
             
-            <div class="education-item">
+            <div class="education-item scroll-reveal-item">
                 <div class="education-title">Master's in Computer Science and Engineering</div>
                 <div class="education-subtitle">NOVA School of Science and Technology • 2024 - Present</div>
                 <p style="color: var(--color-text-light); font-size: 14px;">
@@ -649,7 +750,8 @@
                 </p>
             </div>
 
-            <div class="education-item">
+
+            <div class="education-item scroll-reveal-item">
                 <div class="education-title">Bachelor's in Computer Science and Engineering</div>
                 <div class="education-subtitle">NOVA School of Science and Technology • 2021 - 2024</div>
                 <p style="color: var(--color-text-light); font-size: 14px;">
@@ -657,10 +759,11 @@
             </div>
         </section>
 
+
         <section id="experience">
-            <h2>Professional Experience</h2>
+            <h2 class="scroll-reveal">Professional Experience</h2>
             
-            <div class="education-item">
+            <div class="education-item scroll-reveal-item">
                 <div class="education-title">Backend Developer Intern</div>
                 <div class="education-subtitle">Celfocus - NOVABASE, Lisboa • 2024</div>
                 <p style="color: var(--color-text-light); font-size: 14px;">
@@ -669,11 +772,12 @@
             </div>
         </section>
 
+
         <!-- Projects Section -->
         <section id="projects">
-            <h2>Academic Projects</h2>
+            <h2 class="scroll-reveal">Academic Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card scroll-reveal-item">
                     <div class="project-image">🔐</div>
                     <div class="project-content">
                         <div class="project-title">Secure Handshake Protocol</div>
@@ -688,7 +792,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+
+                <div class="project-card scroll-reveal-item">
                     <div class="project-image">☁️</div>
                     <div class="project-content">
                         <div class="project-title">Tukano - Cloud Computing Deployment</div>
@@ -703,7 +808,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+
+                <div class="project-card scroll-reveal-item">
                     <div class="project-image">⚙️</div>
                     <div class="project-content">
                         <div class="project-title">Distributed Systems Implementation</div>
@@ -718,7 +824,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+
+                <div class="project-card scroll-reveal-item">
                     <div class="project-image">🧅</div>
                     <div class="project-content">
                         <div class="project-title">Trust-Aware Tor Path Selection</div>
@@ -735,46 +842,25 @@
             </div>
         </section>
 
+
         <!-- Blog Section -->
         <section id="blog">
-            <h2>Artigos & Blog</h2>
-            
-            <!--<div class="blog-item">
-                <div class="blog-date">6 de Janeiro de 2026</div>
-                <div class="blog-title">Implementando Segurança em Backend com Java Spring Boot</div>
-                <p class="blog-excerpt">
-                    Guia prático sobre JWT authentication, validação de dados e implementação de pipelines CI/CD com Swagger...
-                </p>
-            </div>
-
-            <div class="blog-item">
-                <div class="blog-date">28 de Dezembro de 2025</div>
-                <div class="blog-title">Arquitetura de Microserviços com Apache Kafka e Cloud</div>
-                <p class="blog-excerpt">
-                    Como implementar message streaming em tempo real com Kafka, integrar com MongoDB e fazer deploy em AWS...
-                </p>
-            </div>
-
-            <div class="blog-item">
-                <div class="blog-date">15 de Dezembro de 2025</div>
-                <div class="blog-title">Protocolos Criptográficos e Segurança em Rede</div>
-                <p class="blog-excerpt">
-                    Análise profunda de ECDSA, HMAC, Diffie-Hellman e como implementar transportes seguros em UDP/TCP...
-                </p>
-            </div> -->
+            <h2 class="scroll-reveal">Artigos & Blog</h2>
         </section>
+
 
         <!-- Certificates Section -->
         <section id="certificates">
-            <h2>Certifications & Awards</h2>
+            <h2 class="scroll-reveal">Certifications & Awards</h2>
             <div class="certificates-grid">
-                <div class="certificate-card">
+                <div class="certificate-card scroll-reveal-item">
                     <div class="certificate-icon">🏆</div>
                     <div class="certificate-name">Backend Developer Intern</div>
                     <div class="certificate-issuer">Celfocus - NOVABASE • 2024</div>
                 </div>
 
-                <div class="certificate-card">
+
+                <div class="certificate-card scroll-reveal-item">
                     <div class="certificate-icon">🎓</div>
                     <div class="certificate-name">Bachelor's Degree in Computer Science and Engineering</div>
                     <div class="certificate-issuer">NOVA University • 2024</div>
@@ -782,9 +868,10 @@
             </div>
         </section>
 
+
         <!-- Contact Section -->
         <section id="contact">
-            <div class="contact-container">
+            <div class="contact-container scroll-reveal">
                 <h2 style="border: none; color: var(--color-primary); margin: 0 0 var(--space-16) 0;">
                     Shall we work together?
                 </h2>
@@ -792,14 +879,16 @@
                     I am currently seeking employment opportunities.
                 </p>
 
+
                 <div class="social-links">
                     <a href="https://github.com/RAGSilva" target="_blank" class="social-icon" title="GitHub">
-                        <span></span>
+                        <span>💻</span>
                     </a>
                     <a href="https://linkedin.com/in/rodrigo-silva-150b01191" target="_blank" class="social-icon" title="LinkedIn">
                         <span>💼</span>
                     </a>
                 </div>
+
 
                 <div class="contact-links">
                     <a href="mailto:digosilva2003@gmail.com" class="contact-link">
@@ -813,25 +902,61 @@
         </section>
     </div>
 
+
     <!-- Footer -->
-    <footer>
+    <footer class="scroll-reveal">
         <p>&copy; 2026 Rodrigo Silva</p>
     </footer>
 
     <script>
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-item');
+            
+            revealElements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    if (element.classList.contains('scroll-reveal-item')) {
+                        // Stagger effect for items in same container
+                        setTimeout(() => {
+                            element.classList.add('active');
+                        }, index * 100);
+                    } else {
+                        element.classList.add('active');
+                    }
+                }
+            });
+        }
+
+        // Trigger reveal on page load
+        window.addEventListener('load', revealOnScroll);
+        
+        // Trigger reveal on scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Hamburger menu
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll to section
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('active');
             }
         }
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[onclick]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-            });
-        });
+        // Initial reveal on page load
+        document.addEventListener('DOMContentLoaded', revealOnScroll);
     </script>
 </body>
 </html>
