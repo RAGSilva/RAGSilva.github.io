@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodrigo Silva Portfolio</title>
+    <title>Rodrigo Silva - Cybersecurity Developer Portfolio</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N65CP3W9LR"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,12 +20,12 @@
             --color-text: #e0e0e0;
             --color-text-light: #b0b0b0;
             --color-accent: #ffbe0b;
+            --color-success: #00ff88;
             --space-16: 16px;
             --space-24: 24px;
             --space-32: 32px;
             --radius-base: 8px;
         }
-
 
         * {
             margin: 0;
@@ -33,15 +33,79 @@
             box-sizing: border-box;
         }
 
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', monospace;
             background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
             color: var(--color-text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Animações de entrada */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Classe para elementos que aparecem ao scroll */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Navigation */
         nav {
@@ -54,7 +118,6 @@
             border-bottom: 2px solid var(--color-primary);
         }
 
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -64,7 +127,6 @@
             align-items: center;
         }
 
-
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -72,8 +134,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
         }
-
 
         .nav-links {
             display: flex;
@@ -81,28 +144,38 @@
             list-style: none;
         }
 
-
         .nav-links a {
             color: var(--color-text);
             text-decoration: none;
             transition: color 0.3s;
             cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
         }
 
+        .nav-links a::before {
+            content: '> ';
+            color: var(--color-primary);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
 
         .nav-links a:hover {
             color: var(--color-primary);
         }
 
-
-        /* Hamburger Menu */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 6px;
         }
-
 
         .hamburger span {
             width: 25px;
@@ -112,21 +185,17 @@
             transition: all 0.3s ease;
         }
 
-
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(10px, 10px);
         }
-
 
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
 
-
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(8px, -8px);
         }
-
 
         @media (max-width: 768px) {
             .nav-links {
@@ -142,57 +211,37 @@
                 border-bottom: 2px solid var(--color-primary);
             }
 
-
             .nav-links.active {
                 display: flex;
             }
-
 
             .nav-links a {
                 padding: var(--space-12) 0;
                 border-bottom: 1px solid rgba(0, 212, 255, 0.2);
             }
 
-
             .hamburger {
                 display: flex;
             }
         }
 
-
-
-        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: var(--space-24);
         }
 
-
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 80px var(--space-24);
+            padding: 60px var(--space-24);
             text-align: center;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
             border-radius: 20px;
             border: 2px solid var(--color-primary);
             margin-bottom: var(--space-32);
             animation: slideDown 0.6s ease-out;
         }
-
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
 
         .hero h1 {
             font-size: 48px;
@@ -203,198 +252,223 @@
             background-clip: text;
         }
 
-
         .hero-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--color-text-light);
             margin-bottom: var(--space-24);
         }
 
-
-        .hero-info {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-32);
-            margin-top: var(--space-24);
-            flex-wrap: wrap;
+        /* Timeline Styles */
+        .timeline-section {
+            margin: 80px 0;
         }
 
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: var(--space-16);
-            border-radius: var(--radius-base);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-
-        .info-label {
-            color: var(--color-primary);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-
-        .info-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--color-text);
-        }
-
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            color: var(--color-dark);
-            text-decoration: none;
-            border-radius: var(--radius-base);
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: var(--space-16);
-        }
-
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
-
-
-        /* Scroll Reveal Animations */
-        .scroll-reveal {
-            opacity: 0;
-        }
-
-        .scroll-reveal.active {
-            animation: revealElement 0.6s ease-out forwards;
-        }
-
-        .scroll-reveal-item {
-            opacity: 0;
-        }
-
-        .scroll-reveal-item.active {
-            animation: revealElement 0.6s ease-out forwards;
-        }
-
-        @keyframes revealElement {
-            from {
-                opacity: 0;
-                transform: translateY(30px) translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) translateX(0);
-            }
-        }
-
-
-        /* Section Styles */
-        section {
-            margin-bottom: 80px;
-        }
-
-
-        h2 {
+        .timeline-title {
+            text-align: center;
             font-size: 36px;
-            margin-bottom: var(--space-32);
             color: var(--color-primary);
-            text-transform: uppercase;
+            margin-bottom: var(--space-32);
+            font-weight: 700;
             letter-spacing: 2px;
-            border-bottom: 3px solid var(--color-secondary);
-            padding-bottom: var(--space-16);
-            opacity: 0;
+            text-transform: uppercase;
         }
 
-        h2.active {
-            animation: revealElement 0.6s ease-out forwards;
+        .timeline-container {
+            position: relative;
+            padding: var(--space-32) 0;
         }
 
+        .timeline-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-32);
+        }
 
-        /* About Section */
-        .about-content {
+        .timeline-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 200px 1fr;
             gap: var(--space-32);
             align-items: center;
         }
 
-
-        .about-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--color-text);
+        .timeline-item.fade-in-scroll {
+            opacity: 0;
+            transform: translateX(-50px);
         }
 
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: var(--space-16);
+        .timeline-item.fade-in-scroll.visible {
+            animation: slideInLeft 0.6s ease-out forwards;
         }
 
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
 
-        .skill-tag {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--color-primary);
-            padding: var(--space-16);
-            border-radius: var(--radius-base);
+        .timeline-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .timeline-item:nth-child(even).fade-in-scroll.visible {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .timeline-date {
             text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            padding: var(--space-16);
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-primary);
             cursor: pointer;
             transition: all 0.3s;
         }
 
-
-        .skill-tag:hover {
+        .timeline-date:hover {
             background: rgba(0, 212, 255, 0.2);
-            transform: translateY(-5px);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
-
-        /* Education */
-        .education-item {
+        .timeline-content {
             background: rgba(255, 255, 255, 0.05);
             padding: var(--space-24);
-            margin-bottom: var(--space-16);
             border-radius: var(--radius-base);
             border-left: 4px solid var(--color-primary);
+            cursor: pointer;
             transition: all 0.3s;
         }
 
-
-        .education-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(10px);
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
         }
 
+        .timeline-icon {
+            font-size: 32px;
+            margin-bottom: var(--space-12);
+        }
 
-        .education-title {
-            font-size: 18px;
-            font-weight: bold;
+        .timeline-year {
+            font-size: 12px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title-text {
+            font-size: 20px;
+            font-weight: 700;
             color: var(--color-primary);
             margin-bottom: 8px;
         }
 
-
-        .education-subtitle {
+        .timeline-description {
             color: var(--color-text-light);
             font-size: 14px;
-            margin-bottom: 8px;
+            line-height: 1.6;
         }
 
+        /* Skills Radar Section */
+        .skills-radar-section {
+            margin: 80px 0;
+            text-align: center;
+        }
 
-        /* Projects */
+        .skills-radar-title {
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-32);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .radar-container {
+            background: rgba(5, 9, 17, 0.6);
+            border: 2px solid var(--color-secondary);
+            border-radius: var(--radius-base);
+            padding: 60px var(--space-24);
+        }
+
+        .radar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-24);
+            margin-top: var(--space-32);
+        }
+
+        .skill-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid var(--color-primary);
+            padding: var(--space-20);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill-card.fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .skill-card.fade-in-scroll.visible {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .skill-card:hover {
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+            border-color: var(--color-secondary);
+        }
+
+        .skill-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .skill-level {
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 12px;
+        }
+
+        .skill-level.level-8 { width: 80%; }
+        .skill-level.level-9 { width: 90%; }
+        .skill-level.level-85 { width: 85%; }
+
+        .skill-level-text {
+            font-size: 12px;
+            color: var(--color-success);
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin: 80px 0;
+        }
+
+        .projects-title {
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-32);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--space-24);
         }
-
 
         .project-card {
             background: rgba(255, 255, 255, 0.05);
@@ -405,6 +479,14 @@
             transition: all 0.3s;
         }
 
+        .project-card.fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project-card.fade-in-scroll.visible {
+            animation: slideUp 0.6s ease-out forwards;
+        }
 
         .project-card:hover {
             transform: translateY(-10px);
@@ -412,37 +494,33 @@
             border-color: var(--color-primary);
         }
 
-
-        .project-image {
+        .project-header {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 110, 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 64px;
         }
-
 
         .project-content {
             padding: var(--space-24);
         }
 
-
         .project-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 700;
             color: var(--color-primary);
+            margin-bottom: 12px;
         }
-
 
         .project-description {
             color: var(--color-text-light);
-            font-size: 14px;
+            font-size: 13px;
+            line-height: 1.6;
             margin-bottom: var(--space-16);
         }
-
 
         .project-tags {
             display: flex;
@@ -450,183 +528,192 @@
             flex-wrap: wrap;
         }
 
-
-        .tag {
+        .project-tag {
             background: rgba(255, 190, 11, 0.1);
             color: var(--color-accent);
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 600;
         }
 
+        .project-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--color-success);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
 
-        /* Blog */
-        .blog-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: var(--space-24);
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: rgba(10, 14, 39, 0.95);
+            border: 2px solid var(--color-primary);
             border-radius: var(--radius-base);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            margin-bottom: var(--space-16);
-            transition: all 0.3s;
+            padding: var(--space-32);
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+            position: relative;
         }
 
-
-        .blog-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--color-primary);
-        }
-
-
-        .blog-date {
-            color: var(--color-accent);
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-
-
-        .blog-title {
-            font-size: 20px;
-            font-weight: bold;
+        .modal-close {
+            position: absolute;
+            top: var(--space-16);
+            right: var(--space-16);
+            background: none;
+            border: none;
             color: var(--color-primary);
-            margin-bottom: 8px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
+        .modal-close:hover {
+            color: var(--color-secondary);
+        }
 
-        .blog-excerpt {
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-16);
+            margin-bottom: var(--space-24);
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+            padding-bottom: var(--space-16);
+        }
+
+        .modal-icon {
+            font-size: 48px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .modal-body {
+            margin-bottom: var(--space-24);
+        }
+
+        .modal-section {
+            margin-bottom: var(--space-24);
+        }
+
+        .modal-section-title {
+            font-size: 14px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .modal-text {
             color: var(--color-text-light);
             font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 12px;
         }
 
-
-        /* Certificates */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-24);
-        }
-
-
-        .certificate-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
-            padding: var(--space-24);
-            border-radius: var(--radius-base);
-            border: 2px solid var(--color-secondary);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-
-        .certificate-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.3);
-        }
-
-
-        .certificate-icon {
-            font-size: 48px;
+        .modal-tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             margin-bottom: var(--space-16);
         }
 
-
-        .certificate-name {
-            font-size: 16px;
-            font-weight: bold;
+        .modal-tech {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--color-primary);
             color: var(--color-primary);
-            margin-bottom: 4px;
-        }
-
-
-        .certificate-issuer {
-            color: var(--color-text-light);
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 12px;
+            font-weight: 600;
         }
 
+        .modal-impact {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid var(--color-success);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+        }
+
+        .modal-impact-item {
+            color: var(--color-success);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         /* Contact Section */
-        .contact-container {
+        .contact-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .contact-box {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
             padding: 60px var(--space-24);
             border-radius: var(--radius-base);
-            text-align: center;
             border: 2px solid var(--color-primary);
         }
 
-        .contact-container h2 {
-            opacity: 1 !important;
-            border: none;
+        .contact-box.fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .contact-box.fade-in-scroll.visible {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .contact-title {
+            font-size: 32px;
             color: var(--color-primary);
-            margin: 0 0 var(--space-16) 0;
+            margin-bottom: var(--space-16);
+            font-weight: 700;
         }
 
-        .contact-container.active h2 {
-            animation: revealElement 0.6s ease-out forwards;
+        .contact-subtitle {
+            color: var(--color-text-light);
+            margin-bottom: var(--space-32);
+            font-size: 14px;
         }
 
-        .contact-container p {
-            opacity: 0;
-        }
-
-        .contact-container.active p {
-            opacity: 1;
-            animation: revealElement 0.6s ease-out 0.1s forwards;
-        }
-
-        .contact-container .social-links {
-            opacity: 0;
-        }
-
-        .contact-container.active .social-links {
-            opacity: 1;
-            animation: revealElement 0.6s ease-out 0.2s forwards;
-        }
-
-        .contact-container .contact-links {
-            opacity: 0;
-        }
-
-        .contact-container.active .contact-links {
-            opacity: 1;
-            animation: revealElement 0.6s ease-out 0.3s forwards;
-        }
-
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-24);
-            margin-top: var(--space-32);
-            flex-wrap: wrap;
-        }
-
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--color-text);
-            text-decoration: none;
-            padding: var(--space-16);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-base);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            transition: all 0.3s;
-        }
-
-
-        .contact-link:hover {
-            background: rgba(0, 212, 255, 0.2);
-            color: var(--color-primary);
-        }
-
-
-        /* Social Links */
         .social-links {
             display: flex;
             justify-content: center;
             gap: var(--space-16);
             margin-bottom: var(--space-32);
         }
-
 
         .social-icon {
             width: 50px;
@@ -640,8 +727,8 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 24px;
+            text-decoration: none;
         }
-
 
         .social-icon:hover {
             background: var(--color-primary);
@@ -649,6 +736,53 @@
             transform: translateY(-5px);
         }
 
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-24);
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text);
+            text-decoration: none;
+            padding: var(--space-16);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: var(--radius-base);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            margin-top: var(--space-16);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
 
         /* Footer */
         footer {
@@ -657,43 +791,35 @@
             border-top: 1px solid rgba(0, 212, 255, 0.2);
             color: var(--color-text-light);
             margin-top: 80px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            opacity: 1;
         }
-
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: var(--space-16);
+            .timeline-item {
+                grid-template-columns: 1fr;
             }
 
-
-            .hero {
-                padding: 40px var(--space-16);
+            .timeline-item:even {
+                direction: ltr;
             }
 
+            .timeline-date {
+                font-size: 20px;
+            }
 
             .hero h1 {
                 font-size: 32px;
             }
 
-
-            .hero-info {
-                gap: var(--space-16);
+            .modal-content {
+                padding: var(--space-24);
             }
 
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-
-            h2 {
-                font-size: 28px;
-            }
-
-
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .timeline-title {
+                font-size: 24px;
             }
         }
     </style>
@@ -702,324 +828,466 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">PORTRS.</div>
+            <div class="logo">&gt; PORTRS</div>
             <ul class="nav-links">
-                <li><a onclick="scrollToSection('about')">About</a></li>
-                <li><a onclick="scrollToSection('education')">Education</a></li>
-                <li><a onclick="scrollToSection('experience')">Experience</a></li>
+                <li><a onclick="scrollToSection('hero')">Home</a></li>
+                <li><a onclick="scrollToSection('timeline')">Journey</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
                 <li><a onclick="scrollToSection('projects')">Projects</a></li>
-                <!--<li><a onclick="scrollToSection('blog')">Blog</a></li>-->
-                <li><a onclick="scrollToSection('certificates')">Certificates</a></li>
                 <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-
-    <!-- Hero Section -->
     <div class="container">
-        <section class="hero">
-            <div style="display: flex; align-items: center; gap: var(--space-32); margin-bottom: var(--space-24); flex-wrap: wrap; justify-content: center;">
-                <div style="flex-shrink: 0;">
-                    <img id="profile-photo" src="Photo.jpg" alt="Photo" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--color-primary); object-fit: cover;">
-                </div>
-            <div>
-            <h1>Hello! I'm Rodrigo Silva</h1>
-            <p class="hero-subtitle">Cybersecurity Enthusiast | Computer Science Student | Learning Smart Detections of Stealhty DoS Attacks</p>
-            
-            <div class="hero-info">
-                <div class="info-card scroll-reveal-item">
-                    <div class="info-label">Age</div>
-                    <div class="info-value">22 years</div>
-                </div>
-                <div class="info-card scroll-reveal-item">
-                    <div class="info-label">Location</div>
-                    <div class="info-value">Lisbon, 🇵🇹</div>
-                </div>
-                <div class="info-card scroll-reveal-item">
-                    <div class="info-label">Speciality</div>
-                    <div class="info-value">Cybersecurity</div>
-                </div>
-            </div>
-
-
-            <button class="btn" onclick="document.getElementById('cv-download').click()">Download CV</button>
-            <a id="cv-download" href="CV.pdf" style="display:none;" download="CV.pdf"></a>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in-scroll">
+            <h1>Rodrigo Silva</h1>
+            <p class="hero-subtitle">Cybersecurity Engineer | Software Developer</p>
+            <p style="color: var(--color-text-light); margin-top: var(--space-24);">
+                🔐 Focused on Smart Detections of Stealthy DoS Attacks<br>
+                💼 Master's in Computer Science and Engineering (Security & Privacy) @ NOVA<br>
+                ⚡ Passionate about secure system architecture
+            </p>
+            <a href="CV.pdf" class="btn" download>Download CV</a>
         </section>
 
-        <div style="margin-top: var(--space-24); display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap;">
-            <a href="#experience" class="btn">View My Work</a>
-            <a href="#contact" class="btn" style="background: rgba(0, 212, 255, 0.2); border: 2px solid var(--color-primary);">Get in Touch</a>
-        </div>
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <h2 class="timeline-title fade-in-scroll">My Journey</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-vertical">
+                    <div class="timeline-item fade-in-scroll">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">🎓</div>
+                            <div class="timeline-year">Education</div>
+                            <div class="timeline-title-text">Bachelor's Start</div>
+                            <div class="timeline-description">Began Computer Science and Engineering at NOVA School of Science and Technology</div>
+                        </div>
+                    </div>
 
-        <!-- About Section -->
-        <section id="about">
-            <h2 class="scroll-reveal">About Me</h2>
-            <div class="about-content">
-                <div class="scroll-reveal-item">
-                    <p class="about-text">
-                        I am a Backend Developer passionate about system architecture, cloud computing, and security. 
-                        Currently studying a Master's in Computer Engineering with a specialization in Security and Privacy at NOVA School of Science and Technology.
-                        Experience in scalable development with Java Spring Boot, implementation of secure protocols, and deployment in the cloud (AWS/Azure).
-                    </p>
-                </div>
-                <div class="scroll-reveal-item">
-                    <h3 style="color: var(--color-primary); margin-bottom: var(--space-16);">Key Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-tag">Java & Spring Boot</div>
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">C & OCaml</div>
-                        <div class="skill-tag">JavaScript</div>
-                        <div class="skill-tag">Docker & K8s</div>
-                        <div class="skill-tag">AWS & Azure</div>
-                        <div class="skill-tag">MongoDB & Redis</div>
-                        <div class="skill-tag">Apache Kafka</div>
+                    <div class="timeline-item fade-in-scroll">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">💼</div>
+                            <div class="timeline-year">Work</div>
+                            <div class="timeline-title-text">Celfocus Internship</div>
+                            <div class="timeline-description">Backend Developer - 40% performance improvement with Java Spring Boot & Apache Kafka</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in-scroll">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">🏆</div>
+                            <div class="timeline-year">Achievement</div>
+                            <div class="timeline-title-text">Bachelor's Degree</div>
+                            <div class="timeline-description">Graduation in Computer Science and Engineering @ NOVA</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in-scroll">
+                        <div class="timeline-date  ">2024</div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">🎓</div>
+                            <div class="timeline-year">Education</div>
+                            <div class="timeline-title-text">Master's Degree</div>
+                            <div class="timeline-description">Started Master's in Computer Science (Security & Privacy Specialization) @ NOVA</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in-scroll">
+                        <div class="timeline-date">2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">🚀</div>
+                            <div class="timeline-year">Present</div>
+                            <div class="timeline-title-text">Seeking Opportunities</div>
+                            <div class="timeline-description">Open to roles in software development and cybersecurity</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-24); margin: 60px 0;">
-            <div style="text-align: center; padding: var(--space-24); background: rgba(0, 212, 255, 0.1); border-radius: var(--radius-base);">
-                <div style="font-size: 36px; font-weight: bold; color: var(--color-primary);">6+</div>
-                <p style="color: var(--color-text-light); margin-top: 8px;">Programming Languages</p>
-            </div>
-            <div style="text-align: center; padding: var(--space-24); background: rgba(255, 0, 110, 0.1); border-radius: var(--radius-base);">
-                <div style="font-size: 36px; font-weight: bold; color: var(--color-secondary);">5</div>
-                <p style="color: var(--color-text-light); margin-top: 8px;">Major Projects Delivered</p>
-            </div>
-            <div style="text-align: center; padding: var(--space-24); background: rgba(255, 190, 11, 0.1); border-radius: var(--radius-base);">
-                <div style="font-size: 36px; font-weight: bold; color: var(--color-accent);">100%</div>
-                <p style="color: var(--color-text-light); margin-top: 8px;">Test Coverage (Projects)</p>
-            </div>
-        </section>
-        <!-- Education Section -->
-        <section id="education">
-            <h2 class="scroll-reveal">Academic background</h2>
+        <!-- Skills Radar Section -->
+        <section id="skills" class="skills-radar-section">
+            <h2 class="skills-radar-title fade-in-scroll">Technical Skills</h2>
             
-            <div class="education-item scroll-reveal-item">
-                <div class="education-title">Master's in Computer Science and Engineering</div>
-                <div class="education-subtitle">NOVA School of Science and Technology • 2024 - Present</div>
-                <p style="color: var(--color-text-light); font-size: 14px;">
-                    Specialization in Security and Privacy.
+            <div class="radar-container fade-in-scroll">
+                <p style="color: var(--color-text-light); margin-bottom: var(--space-24);">
+                    Hover over each skill to see proficiency levels and related projects
                 </p>
-            </div>
+                
+                <div class="radar-grid">
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Java & Spring Boot</div>
+                        <div class="skill-level level-9"></div>
+                        <div class="skill-level-text">████████░ 9/10</div>
+                    </div>
 
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Python</div>
+                        <div class="skill-level level-9"></div>
+                        <div class="skill-level-text">█████████░ 9/10</div>
+                    </div>
 
-            <div class="education-item scroll-reveal-item">
-                <div class="education-title">Bachelor's in Computer Science and Engineering</div>
-                <div class="education-subtitle">NOVA School of Science and Technology • 2021 - 2024</div>
-                <p style="color: var(--color-text-light); font-size: 14px;">
-                </p>
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Cryptography & Security</div>
+                        <div class="skill-level level-9"></div>
+                        <div class="skill-level-text">█████████░ 9/10</div>
+                    </div>
+
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Distributed Systems</div>
+                        <div class="skill-level level-85"></div>
+                        <div class="skill-level-text">████████░ 8.5/10</div>
+                    </div>
+
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">AWS & Azure</div>
+                        <div class="skill-level level-85"></div>
+                        <div class="skill-level-text">████████░ 8.5/10</div>
+                    </div>
+
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Docker & Kubernetes</div>
+                        <div class="skill-level level-9"></div>
+                        <div class="skill-level-text">█████████░ 9/10</div>
+                    </div>
+
+                    <div class="skill-card fade-in-scroll>">
+                        <div class="skill-name">MongoDB & Redis</div>
+                        <div class="skill-level level-9"></div>
+                        <div class="skill-level-text">████████░ 9/10</div>
+                    </div>
+
+                    <div class="skill-card fade-in-scroll">
+                        <div class="skill-name">Apache Kafka</div>
+                        <div class="skill-level level-8"></div>
+                        <div class="skill-level-text">████████░ 8/10</div>
+                    </div>
+                </div>
             </div>
         </section>
-
-
-        <section id="experience">
-            <h2 class="scroll-reveal">Professional Experience</h2>
-            
-            <div class="education-item scroll-reveal-item">
-                <div class="education-title">Backend Developer Intern</div>
-                <div class="education-subtitle">Celfocus - NOVABASE, Lisboa • 2024</div>
-                <p style="color: var(--color-text-light); font-size: 14px;">
-                    Developed a scalable backend application using Java Spring Boot with REST architecture and MongoDB integration. Implemented security features including JWT authentication, data validation, and CI/CD pipelines with Swagger documentation. Optimized performance through Spring Boot Cache System for user and order queries. Integrated Apache Kafka for high-volume real-time message processing and data streaming. Deployed solution on AWS using Amazon ECR for container management, with dedicated VMs for Kafka, database, and application services.
-                </p>
-            </div>
-        </section>
-
 
         <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="scroll-reveal">Academic Projects</h2>
+        <section id="projects" class="projects-section">
+            <h2 class="projects-title fade-in-scroll">Academic Projects</h2>
+            
             <div class="projects-grid">
-                <div class="project-card scroll-reveal-item">
-                    <div class="project-image">🔐</div>
+                <div class="project-card fade-in-scroll" onclick="openModal('secure-handshake')">
+                    <div class="project-header">🔐</div>
                     <div class="project-content">
                         <div class="project-title">Secure Handshake Protocol</div>
-                        <p class="project-description">
-                            UDP-based transport protocol with mutual authentication, data encryption, and protection against replay attacks.
-                        </p>
+                        <div class="project-description">UDP-based transport protocol with mutual authentication and encryption</div>
                         <div class="project-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Cryptography</span>
-                            <span class="tag">ECDSA & HMAC</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Cryptography</span>
+                            <span class="project-tag">ECDSA</span>
                         </div>
+                        <div class="project-badge">Click to explore →</div>
                     </div>
                 </div>
 
-
-                <div class="project-card scroll-reveal-item">
-                    <div class="project-image">☁️</div>
+                <div class="project-card fade-in-scroll" onclick="openModal('tukano')">
+                    <div class="project-header">☁️</div>
                     <div class="project-content">
-                        <div class="project-title">Tukano - Cloud Computing Deployment</div>
-                        <p class="project-description">
-                            Migration of social video-sharing network to Azure with Kubernetes, Docker containerisation, and performance analysis.
-                        </p>
+                        <div class="project-title">Tukano - Cloud Computing</div>
+                        <div class="project-description">Social network migration to Azure with Kubernetes orchestration</div>
                         <div class="project-tags">
-                            <span class="tag">Azure AKS</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">PostgreSQL/MongoDB</span>
+                            <span class="project-tag">Azure AKS</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">K8s</span>
                         </div>
+                        <div class="project-badge">Click to explore →</div>
                     </div>
                 </div>
 
-
-                <div class="project-card scroll-reveal-item">
-                    <div class="project-image">⚙️</div>
+                <div class="project-card fade-in-scroll" onclick="openModal('distributed')">
+                    <div class="project-header">⚙️</div>
                     <div class="project-content">
-                        <div class="project-title">Distributed Systems Implementation</div>
-                        <p class="project-description">
-                            Implementation of Multi-Paxos and ABD Quorum protocols in Java with latency/throughput analysis.
-                        </p>
+                        <div class="project-title">Distributed Systems</div>
+                        <div class="project-description">Multi-Paxos and ABD Quorum protocol implementation</div>
                         <div class="project-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Babel Framework</span>
-                            <span class="tag">Distributed Systems</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Babel</span>
+                            <span class="project-tag">Consensus</span>
                         </div>
+                        <div class="project-badge">Click to explore →</div>
                     </div>
                 </div>
 
-
-                <div class="project-card scroll-reveal-item">
-                    <div class="project-image">🧅</div>
+                <div class="project-card fade-in-scroll" onclick="openModal('tor-taps')">
+                    <div class="project-header">🧅</div>
                     <div class="project-content">
-                        <div class="project-title">Trust-Aware Tor Path Selection</div>
-                        <p class="project-description">
-                            TAPS algorithm for enhanced Tor circuit selection with trust policy configurations and anonymity analysis.
-                        </p>
+                        <div class="project-title">Trust-Aware Tor Path</div>
+                        <div class="project-description">TAPS algorithm for enhanced circuit selection with trust policies</div>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Tor Protocol</span>
-                            <span class="tag">Network Security</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Tor Protocol</span>
+                            <span class="project-tag">Security</span>
                         </div>
+                        <div class="project-badge">Click to explore →</div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-        <!-- Blog Section
-        <section id="blog">
-            <h2 class="scroll-reveal">Artigos & Blog</h2>
-        </section> -->
-
-
-        <!-- Certificates Section -->
-        <section id="certificates">
-            <h2 class="scroll-reveal">Certifications & Awards</h2>
-            <div class="certificates-grid">
-                <div class="certificate-card scroll-reveal-item">
-                    <div class="certificate-icon">🏆</div>
-                    <div class="certificate-name">Backend Developer Intern</div>
-                    <div class="certificate-issuer">Celfocus - NOVABASE • 2024</div>
-                </div>
-
-
-                <div class="certificate-card scroll-reveal-item">
-                    <div class="certificate-icon">🎓</div>
-                    <div class="certificate-name">Bachelor's Degree in Computer Science and Engineering</div>
-                    <div class="certificate-issuer">NOVA University • 2024</div>
-                </div>
-            </div>
-        </section>
-
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-container scroll-reveal-item">
-                <h2>Shall we work together?</h2>
-                <p style="color: var(--color-text-light); margin-bottom: var(--space-32);">
-                    I am currently seeking employment opportunities.
-                </p>
-
+        <section id="contact" class="contact-section">
+            <div class="contact-box fade-in-scroll">
+                <h2 class="contact-title">Ready to Collaborate?</h2>
+                <p class="contact-subtitle">I'm currently seeking opportunities to build scalable systems and contribute to cybersecurity initiatives</p>
 
                 <div class="social-links">
-                    <a href="https://github.com/RAGSilva" target="_blank" class="social-icon" title="GitHub">
-                        <span>💻</span>
-                    </a>
-                    <a href="https://linkedin.com/in/rodrigo-silva-150b01191" target="_blank" class="social-icon" title="LinkedIn">
-                        <span>💼</span>
-                    </a>
+                    <a href="https://github.com/RAGSilva" target="_blank" class="social-icon" title="GitHub">💻</a>
+                    <a href="https://linkedin.com/in/rodrigo-silva-150b01191" target="_blank" class="social-icon" title="LinkedIn">💼</a>
                 </div>
-
 
                 <div class="contact-links">
                     <a href="mailto:digosilva2003@gmail.com" class="contact-link">
                         ✉️ digosilva2003@gmail.com
-                    </a>
-                    <a href="tel:+351964286547" class="contact-link">
-                        📱 +351 964 286 547
                     </a>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- Project Modals -->
+    <div id="modal-secure-handshake" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('secure-handshake')">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon">🔐</div>
+                <div class="modal-title">Secure Handshake Protocol</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Overview</div>
+                    <div class="modal-text">
+                        Network and Computer Systems Security project implementing a secure UDP-based transport protocol with mutual authentication using Password-Based Encryption and ECDSA signatures. Integrated Diffie-Hellman key agreement for dynamic parameter negotiation, ensuring confidentiality, integrity, and replay attack protection. Designed modular architecture and integrated with multimedia streaming and TFTP applications.
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer>
-        <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
-            <a href="https://github.com/RAGSilva" target="_blank" style="color: var(--color-primary); text-decoration: none; transition: color 0.3s;">GitHub</a>
-            <a href="https://linkedin.com/in/rodrigo-silva-150b01191" target="_blank" style="color: var(--color-primary); text-decoration: none; transition: color 0.3s;">LinkedIn</a>
-            <a href="mailto:digosilva2003@gmail.com" style="color: var(--color-primary); text-decoration: none; transition: color 0.3s;">Email</a>
+                <div class="modal-section">
+                    <div class="modal-section-title">Technologies</div>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech">Java</span>
+                        <span class="modal-tech">ECDSA Signatures</span>
+                        <span class="modal-tech">HMAC Codes</span>
+                        <span class="modal-tech">Password-Based Encryption</span>
+                        <span class="modal-tech">Diffie-Hellman Key Agreement</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Achievements</div>
+                    <div class="modal-impact">
+                        <div class="modal-impact-item">✓ End-to-end encryption with ECDSA</div>
+                        <div class="modal-impact-item">✓ Complete replay attack protection</div>
+                        <div class="modal-impact-item">✓ Integrated multimedia & TFTP applications</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 Rodrigo Silva. All rights reserved.</p>
+    </div>
+
+    <div id="modal-tukano" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('tukano')">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon">☁️</div>
+                <div class="modal-title">Tukano - Cloud Computing</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Overview</div>
+                    <div class="modal-text">
+                        Cloud Computing Systems project migrating a video-sharing social network to Microsoft Azure. Implemented both PaaS and IaaS solutions with restructured three-layer REST architecture. Containerized application in Azure Kubernetes Service (AKS) with Docker, deployed PostgreSQL/MongoDB clusters with persistent volumes. Conducted Artillery performance testing for throughput and latency analysis.
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Technologies</div>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech">Azure AKS</span>
+                        <span class="modal-tech">Docker</span>
+                        <span class="modal-tech">Kubernetes</span>
+                        <span class="modal-tech">PostgreSQL & MongoDB</span>
+                        <span class="modal-tech">Artillery Testing</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Achievements</div>
+                    <div class="modal-impact">
+                        <div class="modal-impact-item">✓ Full migration to Azure PaaS & IaaS</div>
+                        <div class="modal-impact-item">✓ AKS deployment with persistent volumes</div>
+                        <div class="modal-impact-item">✓ Comprehensive Artillery performance testing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-distributed" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('distributed')">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon">⚙️</div>
+                <div class="modal-title">Distributed Systems</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Overview</div>
+                    <div class="modal-text">
+                        Algorithms and Distributed Systems project implementing and comparing two distributed key-value store models: Multi-Paxos consensus-based State Machine Replication and ABD Quorum protocol. Developed in Java using Babel framework for inter-process communication. Evaluated performance using YCSB benchmark with three replicas, analyzing latency and throughput trade-offs between consensus complexity and distributed read/write costs.
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Technologies</div>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech">Java</span>
+                        <span class="modal-tech">Multi-Paxos</span>
+                        <span class="modal-tech">ABD Quorum</span>
+                        <span class="modal-tech">Babel Framework</span>
+                        <span class="modal-tech">YCSB Benchmark</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Achievements</div>
+                    <div class="modal-impact">
+                        <div class="modal-impact-item">✓ Multi-Paxos consensus implementation</div>
+                        <div class="modal-impact-item">✓ ABD Quorum protocol comparison</div>
+                        <div class="modal-impact-item">✓ YCSB benchmark performance analysis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tor-taps" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('tor-taps')">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon">🧅</div>
+                <div class="modal-title">Trust-Aware Tor Path Selection</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Overview</div>
+                    <div class="modal-text">
+                        Master's thesis research project developing TAPS (Trust-Aware Path Selection) algorithm for Tor anonymity network. Implemented advanced circuit selection mechanisms based on trust policies and node reputation. Created metrics for evaluating user privacy guarantees under various threat models. Used Python for simulation and analysis, integrating with Tor's consensus data.
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Technologies</div>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech">Python</span>
+                        <span class="modal-tech">Tor Protocol</span>
+                        <span class="modal-tech">Privacy Analysis</span>
+                        <span class="modal-tech">Security Modeling</span>
+                        <span class="modal-tech">Network Simulation</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Achievements</div>
+                    <div class="modal-impact">
+                        <div class="modal-impact-item">✓ Novel TAPS algorithm development</div>
+                        <div class="modal-impact-item">✓ Privacy guarantee quantification</div>
+                        <div class="modal-impact-item">✓ Practical Tor integration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rodrigo Silva. All rights reserved. | Built with care for cybersecurity.</p>
     </footer>
 
     <script>
-        // Scroll Reveal Animation
-        function revealOnScroll() {
-            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-item');
-            
-            revealElements.forEach((element, index) => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    if (element.classList.contains('scroll-reveal-item')) {
-                        // Stagger effect for items in same container
-                        setTimeout(() => {
-                            element.classList.add('active');
-                        }, index * 100);
-                    } else {
-                        element.classList.add('active');
-                    }
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Opcional: descomenta a linha abaixo se quiseres que as animações rodem apenas uma vez
+                    // observer.unobserve(entry.target);
                 }
             });
-        }
+        }, observerOptions);
 
-        // Trigger reveal on page load
-        window.addEventListener('load', revealOnScroll);
-        
-        // Trigger reveal on scroll
-        window.addEventListener('scroll', revealOnScroll);
+        // Observa todos os elementos com a classe fade-in-scroll
+        document.querySelectorAll('.fade-in-scroll').forEach(el => {
+            observer.observe(el);
+        });
 
-        // Hamburger menu
-        function toggleMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        }
-
-        // Scroll to section
+        // Navigation scroll functions
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
-                document.querySelector('.hamburger').classList.remove('active');
-                document.querySelector('.nav-links').classList.remove('active');
+                closeMenu();
             }
         }
 
-        // Initial reveal on page load
-        document.addEventListener('DOMContentLoaded', revealOnScroll);
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+
+        // Modal functions
+        function openModal(projectId) {
+            const modal = document.getElementById('modal-' + projectId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(projectId) {
+            const modal = document.getElementById('modal-' + projectId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    const projectId = this.id.replace('modal-', '');
+                    closeModal(projectId);
+                }
+            });
+        });
     </script>
 </body>
 </html>
